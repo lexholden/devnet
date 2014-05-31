@@ -21,7 +21,7 @@ var changed = false;
 $(document).ready(function() {
 	loadSlider();
 	createHeatmap();
-	//refreshData();
+	refreshData();
 	//getOpenStackData();
 	
 	$("#slider").bind("valuesChanged", function(e, data) {
@@ -36,6 +36,8 @@ $(document).ready(function() {
 });
 
 function refreshData(min, max) {
+	if (! min) {var min = $("#slider").dateRangeSlider("min");}
+	if (! max) {var max = $("#slider").dateRangeSlider("max");}
 	heatmap.store.setDataSet({ max: 100, data: []});
 	total_devices = 0;
 	//console.log(new Date("2014-05-19T12:52:57.707-0700"));
@@ -75,7 +77,7 @@ function withinTimestamp(element, min, max) {
 function loadSlider() {
 	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
-	$("#slider").dateRangeSlider({ "defaultValues":{  "min": new Date(2014, 4, 20, 9, 0, 0), "max": new Date(2014, 04, 20, 17, 0, 0) }, "bounds": { "min": new Date(2014, 4, 19, 0, 0, 0),  "max": new Date(2014, 4, 23, 0, 0, 0) }, 
+	$("#slider").dateRangeSlider({ "defaultValues":{  "min": new Date(2014, 4, 19, 9, 0, 0), "max": new Date(2014, 04, 19, 17, 0, 0) }, "bounds": { "min": new Date(2014, 4, 19, 0, 0, 0),  "max": new Date(2014, 4, 23, 0, 0, 0) }, 
 		"scales": [{
 	      first: function(value){ return value; },
 	      end: function(value) {return value; },
