@@ -6,11 +6,6 @@ import web
 import datetime
 import iso8601
 import json
-from novaclient import client as novaclient
-from ceilometerclient import client as ceilometerclient
-from glanceclient import client as glanceclient
-from cinderclient import client as cinderclient
-from neutronclient.neutron import client as neutronclient
 
 OS_ENDPOINT = ""
 OS_USERNAME = ""
